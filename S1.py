@@ -6,7 +6,7 @@ connection = engine.connect()
 #sel1 = telsprav.select()
 #print(sel1.compile())
 #result = connection.execute(sel1)
-#print(result.fetchall()) #все записи!
+#print(result.fetchall()) #все записи!2
 #print(result.fetchone()) #одну запись
 
 sel1 = telsprav.select().where(telsprav.c.id < 2)

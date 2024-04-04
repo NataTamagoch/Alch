@@ -52,7 +52,7 @@ metadata.create_all(engine)
 
 #result2 = connection.execute(block_insert, items)
 
-#print(ins)!
+#print(ins)
 #print(ins.compile().params)
 #execute_result = connection.execute(ins)
 #print(execute_result)

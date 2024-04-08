@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, asc, desc, select
+from sqlalchemy import create_engine, asc, desc, select,func, join
 from table_str import telsprav, ed
 
 engine = create_engine("postgresql+psycopg2://postgres:123456@10.10.101.193:5432/db6")
@@ -19,7 +19,17 @@ connection = engine.connect()
 # sel1 = telsprav.select().where(telsprav.c.id.between(1,8)).order_by(desc(telsprav.c.id))
 # sel1 = telsprav.select().where(telsprav.c.name.notin_(["Ivan", "Petr", "Nikolay"]))
 # sel1 = telsprav.select().limit(3).offset(5)
-sel1 = select(telsprav.c.phone, telsprav.c.about)
+#sel1 = select(telsprav.c.phone, telsprav.c.about)
+
+#cnt = (func.count(telsprav).label('Count'), telsprav.c.name)
+
+#sel1 = select(telsprav.c.name, func.sum(telsprav.c.id)).group_by(telsprav.c.name)
+
+print(ed.join(telsprav))
+sel1 = select(telsprav.c.name, ed.c.age, ed.c.businessman).select_from(ed.join(telsprav)) # самосоединение
+
+
+
 print(sel1.compile())
 print(sel1.compile().params)
 result = connection.execute(sel1)

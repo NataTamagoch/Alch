@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, asc, desc, select,func, join
+from sqlalchemy import create_engine, asc, desc, select,func, joinб
 from table_str import telsprav, ed
 
 engine = create_engine("postgresql+psycopg2://postgres:123456@10.10.101.193:5432/db6")
